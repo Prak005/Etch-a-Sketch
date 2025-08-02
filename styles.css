@@ -4,6 +4,8 @@ body{
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    font-size: 14px;
+    background-color: black;
 }
 #container {
     display:flex;
@@ -11,7 +13,18 @@ body{
     justify-content: center;
     align-items: center;
 }
-#grid {
+button, input {
+    margin: 14px 0;
+    padding: 12px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+#btn {
+    display:flex;
+    flex-direction: column;
     margin-right: 50px;
-    font-size: 20px;
+}
+.color-btn, #reset{
+    cursor:pointer;
 }
