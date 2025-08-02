@@ -34,7 +34,7 @@ reset.addEventListener("click", () => {
 
 function generateGrid(input) {
     let margin = 64 / input;
-    const boxSize = (containerWidth / input) - margin * 2;          //dynamic boxSize 
+    const boxSize = Math.floor((containerWidth / input) - margin * 2);          //dynamic boxSize 
 
     container.innerHTML = "";
 
@@ -45,7 +45,7 @@ function generateGrid(input) {
             width: ${boxSize}px;
             background-color: grey;
             margin: ${margin}px;
-            display: inline-block;
+            box-sizing: border-box;
         `);
         div.addEventListener("mouseover", () => {
             div.style.backgroundColor = color;
