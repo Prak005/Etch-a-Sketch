@@ -2,9 +2,9 @@ const container = document.querySelector("#container");
 const grid = document.querySelector("input");
 
 let input = +grid.value;
-const containerWidth = 650;
+const containerWidth = 700;
 
-container.setAttribute("style", "width:" + containerWidth + "px;");
+container.setAttribute("style", "max-width:" + containerWidth + "px;");
 let color = "grey";
 const buttons = document.querySelectorAll(".color-btn");
 buttons.forEach(btn => {
@@ -22,6 +22,7 @@ buttons.forEach(btn => {
         }
     });
 });
+
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
     color = "grey";
@@ -34,7 +35,7 @@ reset.addEventListener("click", () => {
 
 function generateGrid(input) {
     let margin = 64 / input;
-    const boxSize = Math.floor((containerWidth / input) - margin * 2);          //dynamic boxSize 
+    const boxSize = (containerWidth / input) - margin * 2;          //dynamic boxSize 
 
     container.innerHTML = "";
 
