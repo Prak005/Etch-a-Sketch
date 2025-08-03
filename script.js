@@ -7,7 +7,7 @@ const toggle = document.querySelector("#toggle");
 
 let input = +gridInput.value; // Initial grid size from input
 let color = "gray";
-let showGridLines = false;
+let showGridLines = true;
 
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -55,6 +55,8 @@ reset.addEventListener("click", () => {
         b.style.backgroundColor = "white";
         b.style.color = "black";
     });
+    showGridLines = true;
+    toggle.classList.add("pushed-state");
     generateGrid(input);
 });
 
@@ -70,7 +72,17 @@ gridInput.addEventListener("keypress", (e) => {
 function toggleGridlines() {
     showGridLines = !showGridLines;
     toggle.classList.toggle('pushed-state');
-    generateGrid(input);
+    const allCells = document.querySelectorAll('.cell');
+    allCells.forEach(cell => {
+        if (showGridLines) {
+            cell.classList.add('border-cell');
+        } else {
+            cell.classList.remove('border-cell');
+        }
+    });
 }
-
 toggle.addEventListener("click", toggleGridlines);
+
+if (showGridLines) {
+    toggle.classList.add('pushed-state');
+}
