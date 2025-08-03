@@ -1,4 +1,4 @@
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,24 +7,59 @@ body{
     font-size: 14px;
     background-color: black;
 }
+
 #container {
-    display:flex;
-    flex-wrap:wrap;
+    width: 750px;
+    height: 750px;
+    background-color: white;
+    display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;/
 }
-button, input {
+
+#grid {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+button,
+input {
     margin: 14px 0;
     padding: 12px;
     border-radius: 16px;
     font-size: 18px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 #btn {
-    display:flex;
+    display: flex;
     flex-direction: column;
     margin-right: 50px;
 }
-.color-btn, #reset{
-    cursor:pointer;
+
+.color-btn,
+#reset,
+#toggle {
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.cell {
+    flex: 1;
+    background-color: grey;
+    box-sizing: border-box;
+}
+
+.border-cell {
+    border: 1px solid black;
+}
+
+#toggle.pushed-state {
+    background-color: aquamarine;
 }
