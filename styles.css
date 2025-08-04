@@ -39,9 +39,18 @@ input {
     margin-right: 50px;
 }
 
+.color-btn {
+    width: 90px;
+}
+input{
+    width: 62px;
+}
+
 .color-btn,
 #reset,
-#toggle {
+#toggle,
+#random,
+#opacity {
     cursor: pointer;
 }
 
@@ -62,4 +71,36 @@ input {
 
 #toggle.pushed-state {
     background-color: aquamarine;
+}
+
+#colors{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+#changes{
+    display: flex;
+    justify-content: flex-end;
+}
+#toggle{
+    width: 120px;
+}
+
+@media screen and (max-width: 950px) {
+    #container{
+        height: 370px;
+        width: 370px;
+    }    
+    body{
+        flex-direction: column;        
+    }
+    #btn{
+        margin: 20px;
+    }
+
+    #colors{
+        flex-direction: row;
+        margin: 0;
+        flex-wrap: wrap;
+    }
 }
