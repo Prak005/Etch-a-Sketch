@@ -4,13 +4,17 @@ const gridInput = document.querySelector("#grid-input");
 const reset = document.querySelector("#reset");
 const buttons = document.querySelectorAll(".color-btn");
 const toggle = document.querySelector("#toggle");
+const random = document.querySelector("#random");
 
+let randomColor = false;
 let input = +gridInput.value; // Initial grid size from input
 let color = "gray";
 let showGridLines = true;
 
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
+        randomColor = false;
+        random.classList.remove("pushed-state");
         color = btn.id;
         buttons.forEach(b => {
             b.style.backgroundColor = "white";
@@ -40,6 +44,12 @@ function generateGrid(size) {
                 cell.classList.add("border-cell");
             }
             cell.addEventListener("mouseover", () => {
+                if (randomColor) {
+                    const r = Math.floor(Math.random() * 256);
+                    const g = Math.floor(Math.random() * 256);
+                    const b = Math.floor(Math.random() * 256);
+                    color = `rgb(${r}, ${g}, ${b})`;
+                }
                 cell.style.backgroundColor = color;
             });
             row.append(cell);
@@ -86,3 +96,17 @@ toggle.addEventListener("click", toggleGridlines);
 if (showGridLines) {
     toggle.classList.add('pushed-state');
 }
+
+random.addEventListener("click", () => {
+    randomColor = !randomColor;
+    if (randomColor) {
+        random.removeAttribute("style");
+        buttons.forEach(b => {
+            b.style.backgroundColor = "white";
+            b.style.color = "black";
+        });
+    } else {
+        random.setAttribute("style", "background-color : "+color);
+    }
+    random.classList.toggle("pushed-state");
+});

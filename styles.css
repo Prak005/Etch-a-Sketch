@@ -69,7 +69,7 @@ input{
     border: 1px solid black;
 }
 
-#toggle.pushed-state {
+.pushed-state {
     background-color: aquamarine;
 }
 
