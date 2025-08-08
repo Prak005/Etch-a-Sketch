@@ -123,7 +123,7 @@ random.addEventListener("click", () => {
             b.style.color = "black";
         });
     } else {
-        random.setAttribute("style", "background-color : " + color);
+        random.setAttribute("style", "font-weight:800; background-color : " + color);
     }
     random.classList.toggle("pushed-state");
 });
