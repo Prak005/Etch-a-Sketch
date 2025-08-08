@@ -5,7 +5,10 @@ const reset = document.querySelector("#reset");
 const buttons = document.querySelectorAll(".color-btn");
 const toggle = document.querySelector("#toggle");
 const random = document.querySelector("#random");
+const opacity = document.querySelector("#opacity");
 
+
+let enableOpacity = false;
 let randomColor = false;
 let input = +gridInput.value; // Initial grid size from input
 let color = "gray";
@@ -14,7 +17,8 @@ let showGridLines = true;
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
         randomColor = false;
-        random.classList.remove("pushed-state");
+        random.classList.remove("pushed-state")
+        random.setAttribute("style", "background-color: white; color: black;");
         color = btn.id;
         buttons.forEach(b => {
             b.style.backgroundColor = "white";
@@ -50,6 +54,14 @@ function generateGrid(size) {
                     const b = Math.floor(Math.random() * 256);
                     color = `rgb(${r}, ${g}, ${b})`;
                 }
+                if (enableOpacity) {
+                    let curr = parseFloat(cell.style.opacity) || 0;
+                    if (curr < 1) {
+                        cell.style.opacity = curr + 0.1;
+                    }
+                } else {
+                    cell.style.opacity = 1;
+                }
                 cell.style.backgroundColor = color;
             });
             row.append(cell);
@@ -67,6 +79,11 @@ reset.addEventListener("click", () => {
     });
     showGridLines = true;
     toggle.classList.add("pushed-state");
+    randomColor = false;
+    random.removeAttribute("style");
+    random.classList.remove("pushed-state");
+    enableOpacity = false;
+    opacity.classList.remove("pushed-state");
     generateGrid(input);
 });
 
@@ -106,7 +123,15 @@ random.addEventListener("click", () => {
             b.style.color = "black";
         });
     } else {
-        random.setAttribute("style", "background-color : "+color);
+        random.setAttribute("style", "background-color : " + color);
     }
     random.classList.toggle("pushed-state");
+});
+
+opacity.addEventListener("click", () => {
+    enableOpacity = !enableOpacity;
+    opacity.classList.toggle("pushed-state");
+    if (!enableOpacity) {
+
+    }
 });
